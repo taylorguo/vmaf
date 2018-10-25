@@ -93,6 +93,11 @@ python -c 'import sys; print(sys.path)'
 
 ## Installation
 
+
+
+<font color=#DC143C size=14>按照以下操作：</font>
+
+
 After cloning VMAF repository, `cd` to the repo directory and run:
 
 ```
@@ -100,6 +105,8 @@ make
 ```
 
 to build the binaries.
+
+<font color=#DC143C size=14>一定要添加pythonPATH，尽量不要在虚拟环境下</font>
 
 Add the `python/src` subdirectories to the environment variable `PYTHONPATH`:
 
@@ -160,6 +167,9 @@ For example:
   python/test/resource/yuv/src01_hrc01_576x324.yuv \
   --out-fmt json
 ```
+
+
+
 
 This will generate JSON output like:
 
@@ -224,6 +234,26 @@ There is also an `ffmpeg2vmaf` command line tool which can compare any file form
 Here `quality_width` and `quality_height` are the width and height the reference and distorted videos are scaled to before VMAF calculation. This is different from `run_vmaf`'s  `width` and `height`, which specify the raw YUV's width and height instead. The input to `ffmpeg2vmaf` must already have such information specified in the header so that they are FFmpeg-decodable.
 
 Note that with `libvmaf` as a filter in FFmpeg becoming available (see [this](https://ffmpeg.org/ffmpeg-filters.html#libvmaf) section for details), `ffmpeg2vmaf` is no longer the preferred way to pass in compressed video streams to VMAF. 
+
+
+<font color=#DC143C size=14> 一定要安装FFMpeg ! </font>
+
+
+```
+./ffmpeg2vmaf 960 496 \
+    /Users/taylorguo/Documents/github/vmaf/QTT/test_20181024/960_496/qdp_960_496_20181025T144350.mp4 \
+    /Users/taylorguo/Documents/github/vmaf/QTT/test_20181024/960_496/qdp_960_496_20181025T144358.mp4 \
+    --out-fmt json
+```
+
+<font color=#DC143C size=14> 也可以直接不运行上述实例，而直接运行：</font>
+
+适当注意文件路径！
+
+```
+python read_compare_mp4.py
+```
+
 
 ## Advanced Usage
 
